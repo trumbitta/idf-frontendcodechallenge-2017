@@ -5,4 +5,4 @@
     window.on = function (target, eventType, callback) {
         target.addEventListener(eventType, callback);
     }
-})(window)
+})(window);
