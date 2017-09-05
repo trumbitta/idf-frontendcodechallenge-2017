@@ -1,9 +1,9 @@
-(function(document) {
+(function() {
   'use strict';
 
   function Template(name) {
-    this.templateTarget = document.querySelector(`[data-template="${name}"]`);
-    this.templateHTML = document.getElementById(name).innerHTML;
+    this.templateTarget = qs(`[data-template="${name}"]`);
+    this.templateHTML = qid(name).innerHTML;
   }
 
   Template.prototype.render = function(data) {
@@ -17,4 +17,4 @@
 
   window.app = window.app || {};
   window.app.Template = Template;
-})(document);
+})();
