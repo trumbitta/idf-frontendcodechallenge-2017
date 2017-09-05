@@ -1,11 +1,6 @@
-(function () {
+(function() {
     'use strict';
 
-    on(window, 'load', init);
-
-    function init () {
-        // Start session, load data from storage
-        // Use data to populate "Existing colleagues" and current number
-        console.log('App started');
-    }
+    var idfApp = new app.IDFApp('idf-fe-code-challenge-2017');
+    on(window, 'load', idfApp.init);
 })();
