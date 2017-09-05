@@ -11,9 +11,7 @@
     IDFApp.prototype.init = function() {
         console.log('App started');
 
-        // Start session, load data from storage
         var existingUsers = self.store.findAll();
-        console.log('Existing users:', existingUsers);
 
         // This block should be a component, somehow :-/
         var templateName = 'colleagues-status';
