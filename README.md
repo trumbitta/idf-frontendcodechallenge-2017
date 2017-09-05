@@ -1,14 +1,28 @@
+# Important
+
+Safari doesn't allow the use of window.localStorage when opening the `index.html` file directly with the browser.  
+It works if you serve the file with a web server.   
+
+The `http-server` node package is a simple web server, and similar
+ones are available for various languages: I know of `serve` for Ruby, and Python has a simple command too.
+
+Node: 
+```bash
+npm install -g http-server
+http-server .
+```
+
 # Welcome to the IDF Front End Code Challenge
 
-Congratulations on getting this far in the interview process! You've done a fantastic job. Now it's time to "let your fingers do the talking". We can't wait to see your code. 
+Congratulations on getting this far in the interview process! You've done a fantastic job. Now it's time to "let your fingers do the talking". We can't wait to see your code.
 
-This test is part of the technical interview. In the interview (done over Skype) we will ask you about some aspects of your code. We know that there are many ways to solve a problem and there is not one specific solution that we are looking for. Instead, we'll be evaluating your style of programming and the choices you make (with their pros and cons). In the interview, you can elaborate on your choices and specific aspects of your code. 
+This test is part of the technical interview. In the interview (done over Skype) we will ask you about some aspects of your code. We know that there are many ways to solve a problem and there is not one specific solution that we are looking for. Instead, we'll be evaluating your style of programming and the choices you make (with their pros and cons). In the interview, you can elaborate on your choices and specific aspects of your code.
 
 ## Specification: Here is what we would like you to do
 
-We would like you to make a simple app whereby you can add one or more colleagues to a company. 
+We would like you to make a simple app whereby you can add one or more colleagues to a company.
 
-The app's functionality will be pretty simple but enough for using good programming practices. 
+The app's functionality will be pretty simple but enough for using good programming practices.
 
 ### Definitions
 
@@ -32,12 +46,12 @@ This is what your app should be able to do:
  - There should be some UI components:
      - Form steps (1). *No logic is required, it's just for styling.*
      - Custom checkbox (8). *No logic is required, it's just for styling.*
-     
+
 ### Optional Features
  - An existing colleague can be removed (element (14) in "Existing colleagues" widget).
  - Every existing colleague should have a unique email address.
  - Sticky footer (15).
- 
+
 ![image](https://user-images.githubusercontent.com/5278175/29818354-a27b6452-8cc4-11e7-8502-4c5a2f670a0b.png)
 _Image 0: UI elements (App state with 5 existing colleagues)_
 
@@ -54,7 +68,7 @@ _Image 3: Colleagues successfully added_
  1. Please only use Vanilla JS (ES5/ES6/ES7) or jQuery. npm packages, tools, and other 3rd party libraries are **not allowed**.
  1. Please don't use a CSS framework (since we would like to evaluate your CSS skills). You can use [CSS normalizer](https://necolas.github.io/normalize.css/) or style reset if you like.
  1. CSS-only icons are preferred. Otherwise, you can use [Fontawesome icons](http://fontawesome.io/icons/).
- 1. App should work in the latest versions of Chrome, Safari, Firefox, and Edge. Backward compatibility is **not required**. 
+ 1. App should work in the latest versions of Chrome, Safari, Firefox, and Edge. Backward compatibility is **not required**.
  1. Use Web Storage API to store data.
  1. Layout should be adaptive.
 
@@ -72,8 +86,8 @@ We will be evaluating the following aspects:
 
 ## What we will NOT evaluate
  1. Usage of bleeding edge features that have bad support and that should be polyfilled.
- 
- 
+
+
 ## Recommendations
 Since chasing the perfect is an endless journey, here are some recommendations for you:
  1. Show your strengths first hand (create perfect markup or focus on JS code with a great architecture).
