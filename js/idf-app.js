@@ -15,7 +15,14 @@
         var existingUsers = self.store.findAll();
         console.log('Existing users:', existingUsers);
 
-        // Use data to populate "Existing colleagues" and current number
+        // This block should be a component, somehow :-/
+        var templateName = 'colleagues-status';
+        var templateData = {
+            colleaguesCount: existingUsers.count,
+            colleaguesLeft: 10 - existingUsers.count // '10' should be a configuration constant
+        };
+        self.colleaguesStatusTemplate = new app.Template(templateName);
+        self.colleaguesStatusTemplate.render(templateData);
     }
 
     window.app = window.app || {};
