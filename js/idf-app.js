@@ -13,6 +13,9 @@
     this.colleaguesStatusComponent = new app.ColleaguesStatusComponent(existingUsers.count);
     this.colleaguesStatusComponent.updateView();
 
+    this.colleaguesAddComponent = new app.ColleaguesAddComponent();
+    this.colleaguesAddComponent.updateView();
+
     this.colleaguesListComponent = new app.ColleaguesListComponent(existingUsers.existingUsers);
     this.colleaguesListComponent.updateView();
   }

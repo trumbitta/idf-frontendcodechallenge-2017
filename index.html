@@ -18,7 +18,10 @@
     <section>
       <h1>Add colleagues to your company</h1>
 
-      <div data-template="colleagues-status"></div>
+      <form>
+        <div data-template="colleagues-status"></div>
+        <div data-template="colleagues-add"></div>
+      </form>
     </section>
 
     <section>
@@ -44,18 +47,50 @@
     </p>
   </template>
 
-  <template id="colleagues-list">
+  <template id="colleagues-add-list-item">
+    <!-- TODO: hide labels -->
+    <label for="name_{{id}}">Full name</label>
+    <input type="text" name="name_{{id}}" id="name_{{id}}" value="" placeholder="John Doe" />
+
+    <label for="email_{{id}}">Email</label>
+    <input type="email" name="email_{{id}}" id="email_{{id}}" value="" placeholder="john.doe@gmail.com" />
+    <button type="button">X</button>
+  </template>
+
+  <template id="colleagues-add-list">
     <ul></ul>
+  </template>
+
+  <template id="colleagues-add">
+    <div data-template="colleagues-add-list"></div>
+    <p>
+      <input type="checkbox" name="notify_by_email" id="notify_by_email" />&#32;
+      <label for="notify_by_email">Notify colleagues by email</label>
+    </p>
+    <p>
+      <button type="button" data-action="colleagues-add-list-item-add">+ Add another colleague</button>
+    </p>
+    <p>
+      <button type="submit">{{colleaguesAddButtonText}}</button><br />
+      <button type="reset">Reset</button>
+    </p>
   </template>
 
   <template id="colleagues-list-item">
     {{colleagueName}}&#32;({{colleagueEmail}})&#32;<button type="button" data-action="existing-colleague-remove">X</button>
   </template>
 
+  <template id="colleagues-list">
+    <ul></ul>
+  </template>
+
   <script src="js/utils.js"></script>
   <script src="js/store.js"></script>
   <script src="js/template.js"></script>
   <script src="js/components/colleagues-status.component.js"></script>
+  <script src="js/components/colleagues-add-list-item.component.js"></script>
+  <script src="js/components/colleagues-add-list.component.js"></script>
+  <script src="js/components/colleagues-add.component.js"></script>
   <script src="js/components/colleagues-list-item.component.js"></script>
   <script src="js/components/colleagues-list.component.js"></script>
   <script src="js/idf-app.js"></script>
