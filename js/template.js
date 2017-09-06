@@ -16,7 +16,9 @@
     var parentNode = this.templateTarget.parentNode;
     var newElement = document.createElement(this.templateTarget.tagName);
     newElement.innerHTML = templateHTMLPopulated;
+
     parentNode.replaceChild(newElement, this.templateTarget);
+    this.templateTarget = newElement; // update templateTarget element in object instance
   }
 
   window.app = window.app || {};
