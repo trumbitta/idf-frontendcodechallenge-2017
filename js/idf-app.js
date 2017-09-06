@@ -12,15 +12,8 @@
     console.log('App started');
 
     var existingUsers = self.store.findAll();
-
-    // This block should be a component, somehow :-/
-    var templateName = 'colleagues-status';
-    var templateData = {
-      colleaguesCount: existingUsers.count,
-      colleaguesLeft: 10 - existingUsers.count // '10' should be a configuration constant
-    };
-    self.colleaguesStatusTemplate = new app.Template(templateName);
-    self.colleaguesStatusTemplate.render(templateData);
+    this.colleaguesStatusComponent = new app.ColleaguesStatusComponent(existingUsers.count);
+    this.colleaguesStatusComponent.updateView();
   }
 
   window.app = window.app || {};
