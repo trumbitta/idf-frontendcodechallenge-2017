@@ -1,6 +1,6 @@
 // Mostly taken from: https://github.com/tastejs/todomvc/blob/gh-pages/examples/vanillajs/js/helpers.js
 
-(function(window, document) {
+(function() {
   'use strict';
 
   // Wish I could've used a transpiler to enable `import`, classes, and avoid this
@@ -15,4 +15,4 @@
   window.qid = function(id) {
     return document.getElementById(id);
   }
-})(window, document);
+})();

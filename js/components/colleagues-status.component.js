@@ -1,4 +1,4 @@
-(function(window) {
+(function() {
   'use strict';
 
   function ColleaguesStatusComponent(existingUsersCount) {
@@ -16,4 +16,4 @@
 
   window.app = window.app || {};
   window.app.ColleaguesStatusComponent = ColleaguesStatusComponent;
-})(window);
+})();

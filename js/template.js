@@ -1,8 +1,8 @@
 (function() {
   'use strict';
 
-  function Template(name) {
-    this.templateTarget = qs(`[data-template="${name}"]`);
+  function Template(name, scope) {
+    this.templateTarget = qs(`[data-template="${name}"]`, scope);
     this.templateHTML = qid(name).innerHTML;
   }
 
@@ -12,7 +12,11 @@
       // TODO: allow for an arbitrary number of spaces between the parenthesis and the variable key
       templateHTMLPopulated = templateHTMLPopulated.replace(new RegExp('{{' + key + '}}', 'g'), data[key]);
     }
-    this.templateTarget.innerHTML = templateHTMLPopulated;
+
+    var parentNode = this.templateTarget.parentNode;
+    var newElement = document.createElement(this.templateTarget.tagName);
+    newElement.innerHTML = templateHTMLPopulated;
+    parentNode.replaceChild(newElement, this.templateTarget);
   }
 
   window.app = window.app || {};

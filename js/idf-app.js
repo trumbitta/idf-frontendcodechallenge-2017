@@ -1,4 +1,4 @@
-(function(window) {
+(function() {
   'use strict';
 
   var self;
@@ -14,8 +14,11 @@
     var existingUsers = self.store.findAll();
     this.colleaguesStatusComponent = new app.ColleaguesStatusComponent(existingUsers.count);
     this.colleaguesStatusComponent.updateView();
+
+    this.colleaguesListComponent = new app.ColleaguesListComponent(existingUsers.existingUsers);
+    this.colleaguesListComponent.updateView();
   }
 
   window.app = window.app || {};
   window.app.IDFApp = IDFApp;
-})(window);
+})();
