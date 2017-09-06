@@ -19,6 +19,15 @@
     this.colleaguesListComponent.updateView();
   }
 
+  IDFApp.prototype.updateStore = function(existingUsers) {
+    var newExistingUsers = {
+      count: existingUsers.length,
+      existingUsers: existingUsers
+    };
+
+    this.store.save(newExistingUsers);
+  }
+
   window.app = window.app || {};
   window.app.IDFApp = IDFApp;
 })();
