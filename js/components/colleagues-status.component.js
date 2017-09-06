@@ -17,7 +17,7 @@
   }
 
   ColleaguesStatusComponent.prototype._bindEvents = function () {
-    on(document, 'item-remove', function (event) {
+    on(document, 'existing-colleague-remove', function (event) {
       event.stopPropagation();
 
       this.existingUsersCount -= 1;

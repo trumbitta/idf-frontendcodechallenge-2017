@@ -18,7 +18,7 @@
   }
 
   ColleaguesListItemComponent.prototype._bindEvents = function() {
-    var eventName = 'item-remove';
+    var eventName = 'existing-colleague-remove';
     var button = qs(`[data-action="${eventName}"]`, this.template.templateTarget);
 
     on(button, 'click', function(event) {
