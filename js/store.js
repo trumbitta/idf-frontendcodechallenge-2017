@@ -1,4 +1,4 @@
-(function(window) {
+(function() {
   'use strict';
 
   var localStorage = window.localStorage;
@@ -31,6 +31,10 @@
     return data;
   };
 
+  Store.prototype.save = function(data) {
+    localStorage.setItem(this.dbName, JSON.stringify(data));
+  }
+
   window.app = window.app || {};
   window.app.Store = Store;
-})(window);
+})();
