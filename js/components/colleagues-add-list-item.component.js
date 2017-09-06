@@ -9,7 +9,9 @@
 
   ColleaguesAddListItemComponent.prototype.updateView = function() {
     var templateData = {
-      id: this.id
+      email: this.colleague.email,
+      id: this.id,
+      name: this.colleague.name
     };
     this.template.render(templateData);
   }
