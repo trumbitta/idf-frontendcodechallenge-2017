@@ -12,6 +12,10 @@
     return (scope || document).querySelector(selector);
   };
 
+  window.qsa = function (selector, scope) {
+    return (scope || document).querySelectorAll(selector);
+  };
+
   window.qid = function(id) {
     return document.getElementById(id);
   }
