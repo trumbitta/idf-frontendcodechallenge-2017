@@ -1,4 +1,4 @@
-(function(window) {
+(function() {
   'use strict';
 
   var self;
@@ -21,4 +21,4 @@
 
   window.app = window.app || {};
   window.app.IDFApp = IDFApp;
-})(window);
+})();
