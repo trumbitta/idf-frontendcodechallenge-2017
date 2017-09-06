@@ -1,4 +1,4 @@
-(function(window) {
+(function() {
   'use strict';
 
   var localStorage = window.localStorage;
@@ -37,4 +37,4 @@
 
   window.app = window.app || {};
   window.app.Store = Store;
-})(window);
+})();

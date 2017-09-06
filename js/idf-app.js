@@ -9,8 +9,6 @@
   }
 
   IDFApp.prototype.init = function() {
-    console.log('App started');
-
     var existingUsers = self.store.findAll();
     this.colleaguesStatusComponent = new app.ColleaguesStatusComponent(existingUsers.count);
     this.colleaguesStatusComponent.updateView();
