@@ -1,8 +1,8 @@
 (function() {
   'use strict';
 
-  function Template(name) {
-    this.templateTarget = qs(`[data-template="${name}"]`);
+  function Template(name, scope) {
+    this.templateTarget = qs(`[data-template="${name}"]`, scope);
     this.templateHTML = qid(name).innerHTML;
   }
 
