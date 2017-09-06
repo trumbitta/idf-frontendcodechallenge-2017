@@ -9,24 +9,19 @@
   }
 
   IDFApp.prototype.init = function() {
-    var existingUsers = self.store.findAll();
-    this.colleaguesStatusComponent = new app.ColleaguesStatusComponent(existingUsers.count);
+    var data = self.store.findAll();
+    this.colleaguesStatusComponent = new app.ColleaguesStatusComponent(data.existingUsers.length);
     this.colleaguesStatusComponent.updateView();
 
     this.colleaguesAddComponent = new app.ColleaguesAddComponent();
     this.colleaguesAddComponent.updateView();
 
-    this.colleaguesListComponent = new app.ColleaguesListComponent(existingUsers.existingUsers);
+    this.colleaguesListComponent = new app.ColleaguesListComponent(data.existingUsers);
     this.colleaguesListComponent.updateView();
   }
 
-  IDFApp.prototype.updateStore = function(existingUsers) {
-    var newExistingUsers = {
-      count: existingUsers.length,
-      existingUsers: existingUsers
-    };
-
-    this.store.save(newExistingUsers);
+  IDFApp.prototype.updateStore = function(key, data) {
+    this.store.save(key, data);
   }
 
   window.app = window.app || {};

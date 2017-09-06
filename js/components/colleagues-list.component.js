@@ -39,7 +39,7 @@
   }
 
   function updateStore(existingUsers) {
-    var customEvent = new CustomEvent('store-update', { detail: existingUsers });
+    var customEvent = new CustomEvent('store-update', { detail: { key: 'existingUsers', data: existingUsers } });
     window.dispatchEvent(customEvent);
   }
 

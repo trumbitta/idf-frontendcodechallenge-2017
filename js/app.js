@@ -6,6 +6,6 @@
   on(window, 'store-update', function(event) {
     event.stopPropagation();
 
-    idfApp.updateStore(event.detail);
+    idfApp.updateStore(event.detail.key, event.detail.data);
   })
 })();

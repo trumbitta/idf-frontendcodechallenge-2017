@@ -15,12 +15,12 @@
 
   ColleaguesAddComponent.prototype.updateView = function() {
     var templateData = {
-      colleaguesAddButtonText: this._updateColleaguesAddButtonText(this.colleaguesToAdd.count),
-      colleaguesToAddCount: this.colleaguesToAdd.count
+      colleaguesAddButtonText: this._updateColleaguesAddButtonText(this.colleaguesToAdd.length),
+      colleaguesToAddCount: this.colleaguesToAdd.length
     };
     this.template.render(templateData);
 
-    this.colleaguesAddListComponent = new app.ColleaguesAddListComponent(this.colleaguesToAdd.colleaguesToAdd);
+    this.colleaguesAddListComponent = new app.ColleaguesAddListComponent(this.colleaguesToAdd);
     this.colleaguesAddListComponent.updateView();
 
     this._bindEvents();
