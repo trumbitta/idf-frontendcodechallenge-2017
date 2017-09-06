@@ -20,11 +20,11 @@
     this._bindEvents();
   }
 
-  ColleaguesAddComponent.prototype._bindEvents = function () {
+  ColleaguesAddComponent.prototype._bindEvents = function() {
     var eventName = 'colleagues-add-list-item-add';
     var button = qs(`[data-action="${eventName}"]`, this.template.templateTarget);
 
-    on(button, 'click', function (event) {
+    on(button, 'click', function(event) {
       event.preventDefault();
       event.stopPropagation();
 
@@ -33,9 +33,6 @@
       this.colleaguesToAdd.push({ email: '', name: '' });
       updateStore(this.colleaguesToAdd);
       this.updateView();
-
-      // var customEvent = new CustomEvent(eventName);
-      // document.dispatchEvent(customEvent); // Dispatching to `document` because more than one component listen to it
     }.bind(this))
   }
 
