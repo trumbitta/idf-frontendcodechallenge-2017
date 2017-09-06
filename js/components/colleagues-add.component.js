@@ -1,16 +1,10 @@
 (function () {
   'use strict';
 
-  function ColleaguesAddComponent() {
+  function ColleaguesAddComponent(colleaguesToAdd) {
     this.template = new app.Template('colleagues-add');
     this.colleaguesAddButtonText = 'Add a colleague';
-    this.colleaguesToAdd = {
-      colleaguesToAdd: [{
-        email: '',
-        name: ''
-      }],
-      count: 1
-    };
+    this.colleaguesToAdd = colleaguesToAdd;
   }
 
   ColleaguesAddComponent.prototype.updateView = function() {
@@ -34,11 +28,10 @@
       event.preventDefault();
       event.stopPropagation();
 
-      this.colleaguesToAdd.count += 1;
+      this._saveUserInput();
       // TODO: Refactor using a model
-      this.colleaguesToAdd.colleaguesToAdd.push({ email: '', name: '' });
-
-      // TODO: Save to data store before updating, get from data store while updating, to save unsubmitted data
+      this.colleaguesToAdd.push({ email: '', name: '' });
+      updateStore(this.colleaguesToAdd);
       this.updateView();
 
       // var customEvent = new CustomEvent(eventName);
@@ -46,12 +39,30 @@
     }.bind(this))
   }
 
-  ColleaguesAddComponent.prototype._updateColleaguesAddButtonText = function (count) {
+  ColleaguesAddComponent.prototype._saveUserInput = function() {
+    var inputTextArray = qsa('input[type="text"]');
+    var inputEmailArray = qsa('input[type="email"]');
+
+    this.colleaguesToAdd.forEach(function(element, index) {
+      // TODO: Refactor using a model
+      this.colleaguesToAdd[index] = {
+        email: inputEmailArray[index].value,
+        name: inputTextArray[index].value
+      }
+    }, this);
+  }
+
+  ColleaguesAddComponent.prototype._updateColleaguesAddButtonText = function(count) {
     if (count === 1) {
       return this.colleaguesAddButtonText
     } else {
       return `Add ${count} colleagues`
     }
+  }
+
+  function updateStore(colleaguesToAdd) {
+    var customEvent = new CustomEvent('store-update', { detail: { key: 'colleaguesToAdd', data: colleaguesToAdd } });
+    window.dispatchEvent(customEvent);
   }
 
   window.app = window.app || {};

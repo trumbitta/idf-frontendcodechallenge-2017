@@ -13,7 +13,7 @@
     this.colleaguesStatusComponent = new app.ColleaguesStatusComponent(data.existingUsers.length);
     this.colleaguesStatusComponent.updateView();
 
-    this.colleaguesAddComponent = new app.ColleaguesAddComponent();
+    this.colleaguesAddComponent = new app.ColleaguesAddComponent(data.colleaguesToAdd);
     this.colleaguesAddComponent.updateView();
 
     this.colleaguesListComponent = new app.ColleaguesListComponent(data.existingUsers);
