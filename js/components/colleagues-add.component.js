@@ -95,9 +95,9 @@
     }, this);
   }
 
-  ColleaguesAddComponent.prototype._updateColleaguesAddListItemAddButtonDisabled = function(count) {
+  ColleaguesAddComponent.prototype._updateColleaguesAddListItemAddButtonDisabled = function(colleaguesToAddCount) {
     var maxColleaguesToAdd = 10 - this.existingUsers.length; // 10 should be a configuration constant
-    if (count < maxColleaguesToAdd) {
+    if (colleaguesToAddCount < maxColleaguesToAdd) {
       return this.colleaguesAddListItemAddButtonDisabled;
     } else {
       return 'disabled'
