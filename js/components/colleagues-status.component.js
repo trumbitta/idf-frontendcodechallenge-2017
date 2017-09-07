@@ -23,6 +23,13 @@
       this.existingUsersCount -= 1;
       this.updateView();
     }.bind(this));
+
+    on(document, 'existing-colleagues-update', function(event) {
+      event.stopPropagation();
+
+      this.existingUsersCount = event.detail.length;
+      this.updateView();
+    }.bind(this));
   }
 
   window.app = window.app || {};
