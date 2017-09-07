@@ -29,7 +29,7 @@
       removeFromArray(this.existingUsers, event.detail);
       updateStore(this.existingUsers);
       this.updateView();
-    }.bind(this))
+    }.bind(this));
   }
 
   function removeFromArray(array, index) {

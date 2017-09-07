@@ -27,7 +27,7 @@
 
       var customEvent = new CustomEvent(eventName, { detail: this.id });
       document.dispatchEvent(customEvent); // Dispatching to `document` because two components listen to it
-    }.bind(this))
+    }.bind(this));
   }
 
   window.app = window.app || {};

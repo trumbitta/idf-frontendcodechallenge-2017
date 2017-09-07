@@ -22,7 +22,7 @@
 
       this.existingUsersCount -= 1;
       this.updateView();
-    }.bind(this))
+    }.bind(this));
   }
 
   window.app = window.app || {};
