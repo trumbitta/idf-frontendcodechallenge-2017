@@ -27,8 +27,10 @@
       event.stopPropagation();
 
       removeFromArray(this.existingUsers, event.detail);
-      updateStore(this.existingUsers);
-      this.updateView();
+
+      // This event is also listened to elsewhere
+      var customEvent = new CustomEvent('existing-colleagues-update', { detail: this.existingUsers });
+      document.dispatchEvent(customEvent);
     }.bind(this));
 
     on(document, 'existing-colleagues-update', function(event) {

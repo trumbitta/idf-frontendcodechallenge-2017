@@ -9,9 +9,12 @@
     this.colleaguesToAddReset = Array.from(colleaguesToAdd);
     this.existingUsers = existingUsers;
 
-    // This event got caught in a multiplying loop because _bindEvents and updateView call each other
+    // These events got caught in a multiplying loop because _bindEvents and updateView call each other
     this.colleaguesAddListItemRemoveHandler = handleColleaguesAddListItemRemove.bind(this);
+    this.existingColleaguesUpdateHandler = handleExistingColleaguesUpdate.bind(this);
+
     off(document, 'colleagues-add-list-item-remove', this.colleaguesAddListItemRemoveHandler);
+    off(document, 'existing-colleagues-update', this.existingColleaguesUpdateHandler);
   }
 
   ColleaguesAddComponent.prototype.updateView = function() {
@@ -76,6 +79,8 @@
     }.bind(this));
 
     on(document, 'colleagues-add-list-item-remove', this.colleaguesAddListItemRemoveHandler);
+
+    on(document, 'existing-colleagues-update', this.existingColleaguesUpdateHandler);
   }
 
   ColleaguesAddComponent.prototype._saveUserInput = function() {
@@ -168,6 +173,11 @@
 
     removeFromArray(this.colleaguesToAdd, event.detail);
     updateStore(this.colleaguesToAdd);
+    this.updateView();
+  }
+
+  function handleExistingColleaguesUpdate(event) {
+    this.existingUsers = event.detail;
     this.updateView();
   }
 
