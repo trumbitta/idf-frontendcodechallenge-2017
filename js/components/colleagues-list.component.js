@@ -30,6 +30,13 @@
       updateStore(this.existingUsers);
       this.updateView();
     }.bind(this));
+
+    on(document, 'existing-colleagues-update', function(event) {
+      this.existingUsers = event.detail;
+
+      updateStore(this.existingUsers);
+      this.updateView();
+    }.bind(this));
   }
 
   function removeFromArray(array, index) {

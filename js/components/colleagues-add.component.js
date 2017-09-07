@@ -1,13 +1,13 @@
 (function () {
   'use strict';
 
-  function ColleaguesAddComponent(colleaguesToAdd, existingUsersCount) {
+  function ColleaguesAddComponent(colleaguesToAdd, existingUsers) {
     this.template = new app.Template('colleagues-add');
     this.colleaguesAddListItemAddButtonDisabled = '';
     this.colleaguesAddButtonText = 'Add a colleague';
     this.colleaguesToAdd = colleaguesToAdd;
     this.colleaguesToAddReset = Array.from(colleaguesToAdd);
-    this.existingUsersCount = existingUsersCount;
+    this.existingUsers = existingUsers;
 
     // This event got caught in a multiplying loop because _bindEvents and updateView call each other
     this.colleaguesAddListItemRemoveHandler = handleColleaguesAddListItemRemove.bind(this);
@@ -31,6 +31,7 @@
 
   ColleaguesAddComponent.prototype._bindEvents = function() {
     var buttonAddColleagueToList = qs(`[data-action="colleagues-add-list-item-add"]`, this.template.templateTarget);
+    var buttonColleaguesAdd = qs(`[data-action="colleagues-add"]`, this.template.templateTarget);
     var buttonResetColleaguesAddList = qs(`[data-action="colleagues-add-list-reset"]`, this.template.templateTarget);
 
     on(buttonAddColleagueToList, 'click', function(event) {
@@ -40,6 +41,24 @@
       this._saveUserInput();
       // TODO: Refactor using a model
       this.colleaguesToAdd.push({ email: '', name: '' });
+      updateStore(this.colleaguesToAdd);
+      this.updateView();
+    }.bind(this));
+
+    on(buttonColleaguesAdd, 'click', function(event) {
+      // This also disables automatic form validation, but it's needed because only Chrome was working with `action=""` and `method="POST"`.
+      event.preventDefault();
+      event.stopPropagation();
+
+      this._saveUserInput();
+      console.log(event, this.colleaguesToAdd);
+      var newExistingUsers = this.existingUsers.concat(this.colleaguesToAdd);
+      this.existingUsers = Array.from(newExistingUsers);
+      updateStore(this.existingUsers, 'existingUsers');
+      updateExistingColleaguesList(this.existingUsers);
+
+      // TODO: extract a method from these three lines: see also the next code block
+      this.colleaguesToAdd = [{ email: '', name: '' }]; // TODO: use a model for this
       updateStore(this.colleaguesToAdd);
       this.updateView();
     }.bind(this));
@@ -70,7 +89,7 @@
   }
 
   ColleaguesAddComponent.prototype._updateColleaguesAddListItemAddButtonDisabled = function(count) {
-    var maxColleaguesToAdd = 10 - this.existingUsersCount; // 10 should be a configuration constant
+    var maxColleaguesToAdd = 10 - this.existingUsers.length; // 10 should be a configuration constant
     if (count < maxColleaguesToAdd) {
       return this.colleaguesAddListItemAddButtonDisabled;
     } else {
@@ -92,8 +111,11 @@
     }
   }
 
-  function updateStore(colleaguesToAdd) {
-    var customEvent = new CustomEvent('store-update', { detail: { key: 'colleaguesToAdd', data: colleaguesToAdd } });
+  function updateStore(data, key) {
+    if (key === undefined) {
+      key = 'colleaguesToAdd';
+    }
+    var customEvent = new CustomEvent('store-update', { detail: { key: key, data: data } });
     window.dispatchEvent(customEvent);
   }
 
@@ -103,6 +125,11 @@
     removeFromArray(this.colleaguesToAdd, event.detail);
     updateStore(this.colleaguesToAdd);
     this.updateView();
+  }
+
+  function updateExistingColleaguesList(existingUsers) {
+    var customEvent = new CustomEvent('existing-colleagues-update', { detail: existingUsers });
+    document.dispatchEvent(customEvent);
   }
 
   window.app = window.app || {};
