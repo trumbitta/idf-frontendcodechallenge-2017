@@ -12,7 +12,7 @@
     // Quick way to ensure a proper update while using appendChild()
     this.template.templateTarget.innerHTML = '';
 
-    this.existingUsers.forEach(function (user, index) {
+    this.existingUsers.forEach(function(user, index) {
       var userElement = document.createElement('li');
       userElement.setAttribute('data-template', 'colleagues-list-item');
       this.template.templateTarget.appendChild(userElement);

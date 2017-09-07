@@ -7,7 +7,7 @@
     target.addEventListener(eventType, callback);
   }
 
-  window.off = function (target, eventType, callback) {
+  window.off = function(target, eventType, callback) {
     target.removeEventListener(eventType, callback);
   }
 
@@ -15,7 +15,7 @@
     return (scope || document).querySelector(selector);
   };
 
-  window.qsa = function (selector, scope) {
+  window.qsa = function(selector, scope) {
     return (scope || document).querySelectorAll(selector);
   };
 

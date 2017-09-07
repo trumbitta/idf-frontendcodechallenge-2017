@@ -16,8 +16,8 @@
     this.template.render(templateData);
   }
 
-  ColleaguesStatusComponent.prototype._bindEvents = function () {
-    on(document, 'existing-colleague-remove', function (event) {
+  ColleaguesStatusComponent.prototype._bindEvents = function() {
+    on(document, 'existing-colleague-remove', function(event) {
       event.stopPropagation();
 
       this.existingUsersCount -= 1;

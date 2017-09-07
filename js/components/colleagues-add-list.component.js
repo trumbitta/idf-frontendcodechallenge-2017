@@ -1,4 +1,4 @@
-(function () {
+(function() {
   'use strict';
 
   function ColleaguesAddListComponent(colleaguesToAdd) {
@@ -10,7 +10,7 @@
     var templateData = {};
     this.template.render(templateData);
 
-    this.colleaguesToAdd.forEach(function (colleague, index) {
+    this.colleaguesToAdd.forEach(function(colleague, index) {
       var colleagueElement = document.createElement('li');
       colleagueElement.setAttribute('data-template', 'colleagues-add-list-item');
       this.template.templateTarget.appendChild(colleagueElement);
