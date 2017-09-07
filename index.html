@@ -18,6 +18,8 @@
     <section>
       <h1>Add colleagues to your company</h1>
 
+      <!-- Not setting an `action` and a `method` because I will handle everything in JavaScript.
+           See `js/colleagues-add.component.js` for details and reasons why -->
       <form>
         <div data-template="colleagues-status"></div>
         <div data-template="colleagues-add"></div>
@@ -50,11 +52,11 @@
   <template id="colleagues-add-list-item">
     <!-- TODO: hide labels -->
     <label for="name_{{id}}">Full name</label>
-    <input type="text" name="name_{{id}}" id="name_{{id}}" value="" placeholder="John Doe" />
+    <input type="text" name="name_{{id}}" id="name_{{id}}" value="{{name}}" placeholder="John Doe" required />
 
     <label for="email_{{id}}">Email</label>
-    <input type="email" name="email_{{id}}" id="email_{{id}}" value="" placeholder="john.doe@gmail.com" />
-    <button type="button">X</button>
+    <input type="email" name="email_{{id}}" id="email_{{id}}" value="{{email}}" placeholder="john.doe@gmail.com" required />
+    <button type="button" data-action="colleagues-add-list-item-remove">X</button>
   </template>
 
   <template id="colleagues-add-list">
@@ -68,11 +70,11 @@
       <label for="notify_by_email">Notify colleagues by email</label>
     </p>
     <p>
-      <button type="button" data-action="colleagues-add-list-item-add">+ Add another colleague</button>
+      <button type="button" data-action="colleagues-add-list-item-add" {{colleagues_add_list_item_add_button_disabled}}>+ Add another colleague</button>
     </p>
     <p>
-      <button type="submit">{{colleaguesAddButtonText}}</button><br />
-      <button type="reset">Reset</button>
+      <button type="submit" data-action="colleagues-add">{{colleaguesAddButtonText}}</button><br />
+      <button type="reset" data-action="colleagues-add-list-reset">Reset</button>
     </p>
   </template>
 

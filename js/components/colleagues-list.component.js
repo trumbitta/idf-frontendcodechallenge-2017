@@ -12,7 +12,7 @@
     // Quick way to ensure a proper update while using appendChild()
     this.template.templateTarget.innerHTML = '';
 
-    this.existingUsers.forEach(function (user, index) {
+    this.existingUsers.forEach(function(user, index) {
       var userElement = document.createElement('li');
       userElement.setAttribute('data-template', 'colleagues-list-item');
       this.template.templateTarget.appendChild(userElement);
@@ -23,13 +23,20 @@
   }
 
   ColleaguesListComponent.prototype._bindEvents = function() {
-    on(document, 'existing-colleague-remove', function (event) {
+    on(document, 'existing-colleague-remove', function(event) {
       event.stopPropagation();
 
       removeFromArray(this.existingUsers, event.detail);
       updateStore(this.existingUsers);
       this.updateView();
-    }.bind(this))
+    }.bind(this));
+
+    on(document, 'existing-colleagues-update', function(event) {
+      this.existingUsers = event.detail;
+
+      updateStore(this.existingUsers);
+      this.updateView();
+    }.bind(this));
   }
 
   function removeFromArray(array, index) {
@@ -39,7 +46,7 @@
   }
 
   function updateStore(existingUsers) {
-    var customEvent = new CustomEvent('store-update', { detail: existingUsers });
+    var customEvent = new CustomEvent('store-update', { detail: { key: 'existingUsers', data: existingUsers } });
     window.dispatchEvent(customEvent);
   }
 
