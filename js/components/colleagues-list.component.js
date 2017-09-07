@@ -23,7 +23,7 @@
   }
 
   ColleaguesListComponent.prototype._bindEvents = function() {
-    on(document, 'existing-colleague-remove', function (event) {
+    on(document, 'existing-colleague-remove', function(event) {
       event.stopPropagation();
 
       removeFromArray(this.existingUsers, event.detail);
