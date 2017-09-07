@@ -3,6 +3,7 @@
 
   function ColleaguesAddComponent(colleaguesToAdd) {
     this.template = new app.Template('colleagues-add');
+    this.colleaguesAddListItemAddButtonDisabled = '';
     this.colleaguesAddButtonText = 'Add a colleague';
     this.colleaguesToAdd = colleaguesToAdd;
 
@@ -13,6 +14,8 @@
 
   ColleaguesAddComponent.prototype.updateView = function() {
     var templateData = {
+      // This is snake_case because it's used in a HTML element attribute, and it must be all lowercase
+      colleagues_add_list_item_add_button_disabled: this._updateColleaguesAddListItemAddButtonDisabled(this.colleaguesToAdd.length),
       colleaguesAddButtonText: this._updateColleaguesAddButtonText(this.colleaguesToAdd.length),
       colleaguesToAddCount: this.colleaguesToAdd.length
     };
@@ -53,6 +56,14 @@
         name: inputTextArray[index].value
       }
     }, this);
+  }
+
+  ColleaguesAddComponent.prototype._updateColleaguesAddListItemAddButtonDisabled = function(count) {
+    if (count < 5) { // This should be a configuration constant
+      return this.colleaguesAddListItemAddButtonDisabled;
+    } else {
+      return 'disabled'
+    }
   }
 
   ColleaguesAddComponent.prototype._updateColleaguesAddButtonText = function(count) {
