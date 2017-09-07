@@ -13,10 +13,14 @@
       templateHTMLPopulated = templateHTMLPopulated.replace(new RegExp('{{' + key + '}}', 'g'), data[key]);
     }
 
-    var parentNode = this.templateTarget.parentNode;
     var newElement = document.createElement(this.templateTarget.tagName);
+    var preservedClasses = this.templateTarget.classList;
+    if (preservedClasses.length > 0) {
+      newElement.classList.add(this.templateTarget.classList);
+    }
     newElement.innerHTML = templateHTMLPopulated;
 
+    var parentNode = this.templateTarget.parentNode;
     parentNode.replaceChild(newElement, this.templateTarget);
     this.templateTarget = newElement; // update templateTarget element in object instance
   }
