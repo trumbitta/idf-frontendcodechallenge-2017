@@ -76,14 +76,13 @@
   }
 
   ColleaguesAddComponent.prototype._saveUserInput = function() {
-    var inputTextArray = qsa('input[type="text"]');
-    var inputEmailArray = qsa('input[type="email"]');
+    var userInput = getUserInput();
 
     this.colleaguesToAdd.forEach(function(element, index) {
       // TODO: Refactor using a model
       this.colleaguesToAdd[index] = {
-        email: inputEmailArray[index].value,
-        name: inputTextArray[index].value
+        email: userInput.emails[index].value,
+        name: userInput.names[index].value
       }
     }, this);
   }
@@ -102,6 +101,16 @@
       return this.colleaguesAddButtonText
     } else {
       return `Add ${count} colleagues`
+    }
+  }
+
+  function getUserInput() {
+    var inputTextArray = qsa('input[type="text"]');
+    var inputEmailArray = qsa('input[type="email"]');
+
+    return {
+      emails: inputEmailArray,
+      names: inputTextArray
     }
   }
 
