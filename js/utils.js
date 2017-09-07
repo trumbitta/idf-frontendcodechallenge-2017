@@ -8,6 +8,10 @@
     target.addEventListener(eventType, callback);
   }
 
+  window.off = function (target, eventType, callback) {
+    target.removeEventListener(eventType, callback);
+  }
+
   window.qs = function(selector, scope) {
     return (scope || document).querySelector(selector);
   };
