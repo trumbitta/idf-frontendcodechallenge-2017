@@ -5,6 +5,10 @@
     this.template = new app.Template('colleagues-add');
     this.colleaguesAddButtonText = 'Add a colleague';
     this.colleaguesToAdd = colleaguesToAdd;
+
+    // This event got caught in a multiplying loop because _bindEvents and updateView call each other
+    this.colleaguesAddListItemRemoveHandler = handleColleaguesAddListItemRemove.bind(this);
+    off(document, 'colleagues-add-list-item-remove', this.colleaguesAddListItemRemoveHandler);
   }
 
   ColleaguesAddComponent.prototype.updateView = function() {
@@ -33,7 +37,9 @@
       this.colleaguesToAdd.push({ email: '', name: '' });
       updateStore(this.colleaguesToAdd);
       this.updateView();
-    }.bind(this))
+    }.bind(this));
+
+    on(document, 'colleagues-add-list-item-remove', this.colleaguesAddListItemRemoveHandler);
   }
 
   ColleaguesAddComponent.prototype._saveUserInput = function() {
@@ -57,9 +63,23 @@
     }
   }
 
+  function removeFromArray(array, index) {
+    if (index !== -1) {
+      array.splice(index, 1);
+    }
+  }
+
   function updateStore(colleaguesToAdd) {
     var customEvent = new CustomEvent('store-update', { detail: { key: 'colleaguesToAdd', data: colleaguesToAdd } });
     window.dispatchEvent(customEvent);
+  }
+
+  function handleColleaguesAddListItemRemove(event) {
+    event.stopPropagation();
+
+    removeFromArray(this.colleaguesToAdd, event.detail);
+    updateStore(this.colleaguesToAdd);
+    this.updateView();
   }
 
   window.app = window.app || {};
