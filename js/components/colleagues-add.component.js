@@ -50,17 +50,20 @@
       event.preventDefault();
       event.stopPropagation();
 
-      this._saveUserInput();
-      console.log(event, this.colleaguesToAdd);
-      var newExistingUsers = this.existingUsers.concat(this.colleaguesToAdd);
-      this.existingUsers = Array.from(newExistingUsers);
-      updateStore(this.existingUsers, 'existingUsers');
-      updateExistingColleaguesList(this.existingUsers);
+      if (validateUserInput() === true) {
+        this._saveUserInput();
+        var newExistingUsers = this.existingUsers.concat(this.colleaguesToAdd);
+        this.existingUsers = Array.from(newExistingUsers);
+        updateStore(this.existingUsers, 'existingUsers');
+        updateExistingColleaguesList(this.existingUsers);
 
-      // TODO: extract a method from these three lines: see also the next code block
-      this.colleaguesToAdd = [{ email: '', name: '' }]; // TODO: use a model for this
-      updateStore(this.colleaguesToAdd);
-      this.updateView();
+        // TODO: extract a method from these three lines: see also the next code block
+        this.colleaguesToAdd = [{ email: '', name: '' }]; // TODO: use a model for this
+        updateStore(this.colleaguesToAdd);
+        this.updateView();
+      } else {
+        // TODO: dispatch event(s) to display helpful error message(s)
+      }
     }.bind(this));
 
     on(buttonResetColleaguesAddList, 'click', function(event) {
@@ -102,6 +105,38 @@
     } else {
       return `Add ${count} colleagues`
     }
+  }
+
+  function validateUserInput() {
+    var userInput = getUserInput();
+
+    return (checkNames(userInput.names) === true) && (checkEmails(userInput.emails) === true);
+  }
+
+  function checkNames(names) {
+    var isValid = true;
+
+    names.forEach(function(name) {
+      if (name.value === undefined || name.value === null || name.value === '') {
+        isValid = false;
+      }
+    }, this);
+
+    return isValid;
+  }
+
+  function checkEmails(emails) {
+    var isValid = true;
+
+    // TODO: check for a valid email address
+    // Warning: it's controversial https://stackoverflow.com/questions/46155/how-to-validate-email-address-in-javascript
+    emails.forEach(function(email) {
+      if (email.value === undefined || email.value === null || email.value === '') {
+        isValid = false;
+      }
+    }, this);
+
+    return isValid;
   }
 
   function getUserInput() {
