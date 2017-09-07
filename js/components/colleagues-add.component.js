@@ -1,11 +1,12 @@
 (function () {
   'use strict';
 
-  function ColleaguesAddComponent(colleaguesToAdd) {
+  function ColleaguesAddComponent(colleaguesToAdd, existingUsersCount) {
     this.template = new app.Template('colleagues-add');
     this.colleaguesAddListItemAddButtonDisabled = '';
     this.colleaguesAddButtonText = 'Add a colleague';
     this.colleaguesToAdd = colleaguesToAdd;
+    this.existingUsersCount = existingUsersCount;
 
     // This event got caught in a multiplying loop because _bindEvents and updateView call each other
     this.colleaguesAddListItemRemoveHandler = handleColleaguesAddListItemRemove.bind(this);
@@ -59,7 +60,8 @@
   }
 
   ColleaguesAddComponent.prototype._updateColleaguesAddListItemAddButtonDisabled = function(count) {
-    if (count < 5) { // This should be a configuration constant
+    var maxColleaguesToAdd = 10 - this.existingUsersCount; // 10 should be a configuration constant
+    if (count < maxColleaguesToAdd) {
       return this.colleaguesAddListItemAddButtonDisabled;
     } else {
       return 'disabled'
