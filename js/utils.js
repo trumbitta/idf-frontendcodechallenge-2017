@@ -22,4 +22,7 @@
   window.qid = function(id) {
     return document.getElementById(id);
   }
+
+  // Allow for looping on nodes (mostly for Edge)
+  NodeList.prototype.forEach = Array.prototype.forEach;
 })();
