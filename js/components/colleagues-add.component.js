@@ -6,6 +6,7 @@
     this.colleaguesAddListItemAddButtonDisabled = '';
     this.colleaguesAddButtonText = 'Add a colleague';
     this.colleaguesToAdd = colleaguesToAdd;
+    this.colleaguesToAddReset = Array.from(colleaguesToAdd);
     this.existingUsersCount = existingUsersCount;
 
     // This event got caught in a multiplying loop because _bindEvents and updateView call each other
@@ -29,16 +30,25 @@
   }
 
   ColleaguesAddComponent.prototype._bindEvents = function() {
-    var eventName = 'colleagues-add-list-item-add';
-    var button = qs(`[data-action="${eventName}"]`, this.template.templateTarget);
+    var buttonAddColleagueToList = qs(`[data-action="colleagues-add-list-item-add"]`, this.template.templateTarget);
+    var buttonResetColleaguesAddList = qs(`[data-action="colleagues-add-list-reset"]`, this.template.templateTarget);
 
-    on(button, 'click', function(event) {
+    on(buttonAddColleagueToList, 'click', function(event) {
       event.preventDefault();
       event.stopPropagation();
 
       this._saveUserInput();
       // TODO: Refactor using a model
       this.colleaguesToAdd.push({ email: '', name: '' });
+      updateStore(this.colleaguesToAdd);
+      this.updateView();
+    }.bind(this));
+
+    on(buttonResetColleaguesAddList, 'click', function(event) {
+      event.preventDefault();
+      event.stopPropagation();
+
+      this.colleaguesToAdd = Array.from(this.colleaguesToAddReset);
       updateStore(this.colleaguesToAdd);
       this.updateView();
     }.bind(this));
