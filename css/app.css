@@ -162,12 +162,6 @@ input {
   padding: 1.125em 1.25em;
 }
 
-@media only screen and (min-width: 40.063em) {
-  .card {
-    border-radius: var(--border-radius-sm);
-  }
-}
-
 /* Footer */
 footer {
   background-color: var(--color-gray);
