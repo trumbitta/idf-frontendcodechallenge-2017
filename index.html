@@ -2,42 +2,49 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" /> -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>IDF Front-End Code Challenge 2017</title>
+
+  <link rel="stylesheet" href="css/reset.css" />
   <link rel="stylesheet" href="css/app.css" />
 </head>
-<body>
+<body class="padding-top-lg">
 
   <div>
-
-    <ul>
-      <li>Step 1</li>
-      <li>Step 2</li>
-      <li>Step 3</li>
-    </ul>
+    <header class="margin-vertical-xs">
+      <ul class="wizard-steps">
+        <li>Step 1</li>
+        <li>Step 2</li>
+        <li>Step 3</li>
+      </ul>
+    </header>
 
     <section>
-      <h1>Add colleagues to your company</h1>
+      <h1 class="margin-vertical-md">Add colleagues to your company</h1>
 
       <!-- Not setting an `action` and a `method` because I will handle everything in JavaScript.
-           See `js/colleagues-add.component.js` for details and reasons why -->
-      <form>
+           See `js/colleagues-add.component.js` for more info -->
+      <form class="card">
         <div data-template="colleagues-status"></div>
         <div data-template="colleagues-add"></div>
       </form>
     </section>
 
     <section>
-      <h2>Existing colleagues</h2>
+      <h2 class="margin-vertical-md">Existing colleagues</h2>
 
-      <ul data-template="colleagues-list"></ul>
+      <ul class="list-unstyled list-striped" data-template="colleagues-list"></ul>
     </section>
 
   </div>
 
-  <footer>
-    <a href="#">Footer link</a>
-    <a href="#">Footer link</a>
-    <a href="#">Footer link</a>
+  <footer class="padding-vertical-md text-align-center">
+    <ul class="list-inline">
+      <li><a href="#">Footer link</a></li>
+      <li><a href="#">Footer link</a></li>
+      <li><a href="#">Footer link</a></li>
+    </ul>
   </footer>
 
   <template id="colleagues-status">
@@ -50,40 +57,39 @@
   </template>
 
   <template id="colleagues-add-list-item">
-    <!-- TODO: hide labels -->
-    <label for="name_{{id}}">Full name</label>
+    <label for="name_{{id}}" class="sr-only">Full name</label>
     <input type="text" name="name_{{id}}" id="name_{{id}}" value="{{name}}" placeholder="John Doe" required />
 
-    <label for="email_{{id}}">Email</label>
+    <label for="email_{{id}}" class="sr-only">Email</label>
     <input type="email" name="email_{{id}}" id="email_{{id}}" value="{{email}}" placeholder="john.doe@gmail.com" required />
-    <button type="button" data-action="colleagues-add-list-item-remove">X</button>
+    <button type="button" class="btn btn-link text-danger" data-action="colleagues-add-list-item-remove">X</button>
   </template>
 
   <template id="colleagues-add-list">
-    <ul></ul>
+    <!-- Here just for uniformity -->
   </template>
 
   <template id="colleagues-add">
-    <div data-template="colleagues-add-list"></div>
-    <p>
+    <ul class="list-unstyled" data-template="colleagues-add-list"></ul>
+    <p class="form-row">
       <input type="checkbox" name="notify_by_email" id="notify_by_email" />&#32;
       <label for="notify_by_email">Notify colleagues by email</label>
     </p>
-    <p>
-      <button type="button" data-action="colleagues-add-list-item-add" {{colleagues_add_list_item_add_button_disabled}}>+ Add another colleague</button>
+    <p class="form-row">
+      <button type="button" class="btn btn-link" data-action="colleagues-add-list-item-add" {{colleagues_add_list_item_add_button_disabled}}>+ Add another colleague</button>
     </p>
-    <p>
-      <button type="submit" data-action="colleagues-add">{{colleaguesAddButtonText}}</button><br />
-      <button type="reset" data-action="colleagues-add-list-reset">Reset</button>
+    <p class="text-align-center margin-bottom-none">
+      <button type="submit" class="btn btn-primary" data-action="colleagues-add">{{colleaguesAddButtonText}}</button><br />
+      <button type="reset" class="btn btn-link margin-vertical-sm" data-action="colleagues-add-list-reset">Reset</button>
     </p>
   </template>
 
   <template id="colleagues-list-item">
-    {{colleagueName}}&#32;({{colleagueEmail}})&#32;<button type="button" data-action="existing-colleague-remove">X</button>
+    {{colleagueName}}&#32;({{colleagueEmail}})&#32;<button type="button" class="btn btn-link text-danger" data-action="existing-colleague-remove">X</button>
   </template>
 
   <template id="colleagues-list">
-    <ul></ul>
+    <ul class="list-unstyled"></ul>
   </template>
 
   <script src="js/utils.js"></script>

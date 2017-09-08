@@ -12,6 +12,7 @@
 
     this.colleaguesToAdd.forEach(function(colleague, index) {
       var colleagueElement = document.createElement('li');
+      colleagueElement.setAttribute('class', 'form-row'); // I don't like setting classes programmatically
       colleagueElement.setAttribute('data-template', 'colleagues-add-list-item');
       this.template.templateTarget.appendChild(colleagueElement);
 
