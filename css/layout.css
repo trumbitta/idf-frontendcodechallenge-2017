@@ -1,0 +1,36 @@
+/*
+  Layout / Grid
+  Breakpoints are from Foundation: http://foundation.zurb.com/sites/docs/v/5.5.3/media-queries.html
+*/
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+
+.container {
+  margin: 0 0.5em;
+}
+
+@media only screen and (min-width: 40.063em) { /* 641px - CSS variables don't seem to work here */
+  .container {
+    width: 76%;
+    margin: 0 auto;
+  }
+}
+
+@media only screen and (min-width: 90.063em) { /* 1441px */
+  .container {
+    width: 70%;
+  }
+}
+
+@media only screen and (min-width: 120.063em) { /* 1921px */
+  .container {
+    width: 50%;
+  }
+}

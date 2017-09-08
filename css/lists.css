@@ -1,0 +1,81 @@
+/* Lists */
+ul.list-unstyled,
+ul.list-inline,
+ul.wizard-steps {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+ul.list-inline li {
+  display: inline-block;
+}
+
+ul.list-striped li:nth-child(even) {
+  background-color: var(--color-gray);
+  color: var(--color-white);
+}
+
+ul.wizard-steps {
+  display: block;
+  line-height: 1;
+  font-size: 1.25em;
+}
+
+ul.wizard-steps li {
+  background-color: var(--color-gray-dark);
+  color: var(--color-white);
+  margin-bottom: var(--spatial-rhythm-xs);
+  padding: var(--spatial-rhythm-sm) var(--spatial-rhythm-md);
+}
+
+ul.wizard-steps li:last-child {
+  margin-bottom: 0;
+}
+
+ul.wizard-steps li.active {
+  background-color: var(--color-primary);
+}
+
+@media only screen and (min-width: 40.063em) { /* 641px - CSS variables don't seem to work here */
+  ul.wizard-steps {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  ul.wizard-steps li {
+    position: relative;
+    margin-right: 2px;
+    margin-bottom: 0;
+    padding: 1.2em 2.2em;
+    flex: 1;
+  }
+
+  ul.wizard-steps li::after,
+  ul.wizard-steps li::before {
+    content: ' ';
+    border-top: 1.7em solid transparent;
+    border-bottom: 1.7em solid transparent;
+    position: absolute;
+    top: 0;
+  }
+
+  ul.wizard-steps li::after {
+    border-left: 1em solid #848484;
+    right: -1em;
+    z-index: 1;
+  }
+
+  ul.wizard-steps li::before {
+    border-left: 1em solid #f9f9f9;
+    left: 0;
+  }
+
+  ul.wizard-steps li.active::after {
+    border-left-color: #009cde;
+  }
+}
+
+li {
+  padding: 0.375em 0.4365em;
+}

@@ -1,0 +1,106 @@
+/*
+  Utilities
+  We use !important for these because when we use it we want them to always be active
+*/
+.text-align-center {
+  text-align: center !important;
+}
+
+.text-align-right {
+  text-align: right !important;
+}
+
+/* https://github.com/twbs/bootstrap/blob/v4-dev/scss/mixins/_screen-reader.scss */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  clip-path: inset(50%);
+  border: 0;
+}
+
+.sr-only-md {
+  position: static;
+  width: auto;
+  height: auto;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  clip-path: none;
+  border: none;
+}
+
+@media only screen and (min-width: 40.063em) { /* 641px - CSS variables don't seem to work here */
+  .sr-only-md {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+    clip-path: inset(50%);
+    border: 0;
+  }
+}
+
+/*
+  Status-aware text
+  We use !important for these because when we use it we want them to always be active
+*/
+.text-danger {
+  color: var(--color-danger) !important;
+}
+
+/*
+  Utilities - Rhythm - Vertical
+  I'm not going to follow closely the dimensions in the sample images; I'll lay out
+  a system with progressive sizes based on the relative font-size of the element.
+  I'll then apply and combine the resulting classes to obtain a close resemblance
+  of the spatial rhythm in the sample images.
+
+  These are usually completely generated and maintained with <20 lines of Sass code
+*/
+.margin-vertical-md {
+  margin-top: var(--spatial-rhythm-md) !important;
+  margin-bottom: var(--spatial-rhythm-md) !important;
+}
+
+.margin-vertical-sm {
+  margin-top: var(--spatial-rhythm-sm) !important;
+  margin-bottom: var(--spatial-rhythm-sm) !important;
+}
+
+.margin-vertical-xs {
+  margin-top: var(--spatial-rhythm-xs) !important;
+  margin-bottom: var(--spatial-rhythm-xs) !important;
+}
+
+.margin-top-md {
+  margin-top: var(--spatial-rhythm-md) !important;
+}
+
+.margin-bottom-md {
+  margin-bottom: var(--spatial-rhythm-md) !important;
+}
+
+.margin-bottom-sm {
+  margin-bottom: var(--spatial-rhythm-sm) !important;
+}
+
+.margin-bottom-none {
+  margin-bottom: 0 !important;
+}
+
+.padding-top-lg {
+  padding-top: var(--spatial-rhythm-lg) !important;
+}
+
+.padding-vertical-md {
+  padding-top: var(--spatial-rhythm-md) !important;
+  padding-bottom: var(--spatial-rhythm-md) !important;
+}

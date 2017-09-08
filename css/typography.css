@@ -1,0 +1,19 @@
+/* Typography */
+h1 {
+  font-size: 2em;
+}
+
+h2 {
+  font-size: 1.5em;
+}
+
+a:link,
+a:visited {
+  color: var(--color-link);
+  text-decoration: none;
+}
+
+a:hover,
+a:active {
+  border-bottom: 0.0625em solid var(--color-link); /* `text-decoration: underline` tends to go over some letters */
+}
