@@ -9,18 +9,19 @@
   <link rel="stylesheet" href="css/reset.css" />
   <link rel="stylesheet" href="css/app.css" />
 </head>
-<body>
+<body class="padding-top-lg">
 
   <div>
-
-    <ul>
-      <li>Step 1</li>
-      <li>Step 2</li>
-      <li>Step 3</li>
-    </ul>
+    <header class="margin-vertical-xs">
+      <ul class="wizard-steps">
+        <li>Step 1</li>
+        <li>Step 2</li>
+        <li>Step 3</li>
+      </ul>
+    </header>
 
     <section>
-      <h1>Add colleagues to your company</h1>
+      <h1 class="margin-vertical-md">Add colleagues to your company</h1>
 
       <!-- Not setting an `action` and a `method` because I will handle everything in JavaScript.
            See `js/colleagues-add.component.js` for more info -->
@@ -31,17 +32,19 @@
     </section>
 
     <section>
-      <h2>Existing colleagues</h2>
+      <h2 class="margin-vertical-md">Existing colleagues</h2>
 
       <ul class="list-unstyled list-striped" data-template="colleagues-list"></ul>
     </section>
 
   </div>
 
-  <footer class="text-align-center">
-    <a href="#">Footer link</a>
-    <a href="#">Footer link</a>
-    <a href="#">Footer link</a>
+  <footer class="padding-vertical-md text-align-center">
+    <ul class="list-inline">
+      <li><a href="#">Footer link</a></li>
+      <li><a href="#">Footer link</a></li>
+      <li><a href="#">Footer link</a></li>
+    </ul>
   </footer>
 
   <template id="colleagues-status">
@@ -75,9 +78,9 @@
     <p>
       <button type="button" class="btn btn-link" data-action="colleagues-add-list-item-add" {{colleagues_add_list_item_add_button_disabled}}>+ Add another colleague</button>
     </p>
-    <p class="text-align-center">
+    <p class="text-align-center margin-bottom-none">
       <button type="submit" class="btn btn-primary" data-action="colleagues-add">{{colleaguesAddButtonText}}</button><br />
-      <button type="reset" class="btn btn-link" data-action="colleagues-add-list-reset">Reset</button>
+      <button type="reset" class="btn btn-link margin-vertical-sm" data-action="colleagues-add-list-reset">Reset</button>
     </p>
   </template>
 

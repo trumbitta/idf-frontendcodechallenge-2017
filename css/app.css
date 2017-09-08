@@ -16,6 +16,12 @@
   --border-radius-xs: 2px;
   --border-radius-sm: 3px;
   --border-radius-md: 4px;
+
+  --spatial-rhythm-xl: 4em;
+  --spatial-rhythm-lg: 2em;
+  --spatial-rhythm-md: 1em;
+  --spatial-rhythm-sm: 0.5em;
+  --spatial-rhythm-xs: 0.25em;
 }
 
 /* Base */
@@ -142,6 +148,43 @@ footer {
 */
 .text-align-center {
   text-align: center !important;
+}
+
+/*
+  Utilities - Rhythm - Vertical
+  I'm not going to follow closely the dimensions in the sample images; I'll lay out
+  a system with progressive sizes based on the relative font-size of the element.
+  I'll then apply and combine the resulting classes to obtain a close resemblance
+  of the spatial rhythm in the sample images.
+
+  These are usually completely generated and maintained with <20 lines of Sass code
+*/
+.margin-vertical-md {
+  margin-top: var(--spatial-rhythm-md) !important;
+  margin-bottom: var(--spatial-rhythm-md) !important;
+}
+
+.margin-vertical-sm {
+  margin-top: var(--spatial-rhythm-sm) !important;
+  margin-bottom: var(--spatial-rhythm-sm) !important;
+}
+
+.margin-vertical-xs {
+  margin-top: var(--spatial-rhythm-xs) !important;
+  margin-bottom: var(--spatial-rhythm-xs) !important;
+}
+
+.margin-bottom-none {
+  margin-bottom: 0 !important;
+}
+
+.padding-top-lg {
+  padding-top: var(--spatial-rhythm-lg) !important;
+}
+
+.padding-vertical-md {
+  padding-top: var(--spatial-rhythm-md) !important;
+  padding-bottom: var(--spatial-rhythm-md) !important;
 }
 
 /* https://github.com/twbs/bootstrap/blob/v4-dev/scss/mixins/_screen-reader.scss */
