@@ -51,9 +51,15 @@ a:active {
 }
 
 /* Lists */
-ul.list-unstyled {
+ul.list-unstyled,
+ul.list-inline {
   list-style-type: none;
+  margin: 0;
   padding: 0;
+}
+
+ul.list-inline li {
+  display: inline-block;
 }
 
 ul.list-striped li:nth-child(even) {
