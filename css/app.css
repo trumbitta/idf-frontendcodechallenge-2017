@@ -4,7 +4,7 @@
     Using variables for these two trivial colors, just in case we decide to tune them a bit
 
     WARNING: It's not possibile to use CSS custom properties on pseudo-elements with Edge until
-    October 17h 2017. So the `ul.wizard-steps` widget doesn't use them.
+    October 17h 2017. So the `ul.wizard-steps` widget and the custom checkbox don't use them.
     See: https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/11495448/
   */
   --color-black: #000000;
@@ -182,7 +182,8 @@ label {
   margin: 0;
 }
 
-input {
+input[type='text'],
+input[type='email'] {
   background-color: var(--color-white);
   border: 1px solid var(--color-gray);
   border-radius: var(--border-radius-xs);
@@ -191,6 +192,42 @@ input {
               inset 1px 0 0 rgba(150, 150, 150, 0.1);
   padding: 0.4365em 0.75em;
   line-height: 1;
+}
+
+input[type='checkbox'] {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+}
+
+input[type='checkbox'] + label {
+  position: relative;
+  padding-left: 1.25em;
+}
+
+input[type='checkbox'] + label::before {
+  content: ' ';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 1em;
+  height: 1em;
+  margin-top: -0.5em;
+  border: 0.125em solid #009cde;
+  border-radius: 3px;
+}
+
+input[type='checkbox']:checked + label::after {
+  content: ' ';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 0.5em;
+  height: 0.5em;
+  margin-top: -0.25em;
+  margin-left: 0.25em;
+  background: #009cde;
+  border-radius: 2px;
 }
 
 .form-row {
