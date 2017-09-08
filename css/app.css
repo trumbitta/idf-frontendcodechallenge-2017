@@ -107,6 +107,7 @@ button[type="reset"] {
 label {
   color: var(--color-gray-dark);
   font-weight: 500;
+  margin: 0;
 }
 
 input {
@@ -118,6 +119,11 @@ input {
               inset 1px 0 0 rgba(150, 150, 150, 0.1);
   padding: 0.4365em 0.75em;
   line-height: 1;
+}
+
+.form-row {
+  margin-bottom: var(--spatial-rhythm-md);
+  padding: 0;
 }
 
 /* Cards */
