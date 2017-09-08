@@ -13,9 +13,9 @@
 
   --color-link: var(--color-primary);
 
-  --border-radius-xs: 2px;
-  --border-radius-sm: 3px;
   --border-radius-md: 4px;
+  --border-radius-sm: 3px;
+  --border-radius-xs: 2px;
 
   --spatial-rhythm-xl: 4em;
   --spatial-rhythm-lg: 2em;
