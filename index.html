@@ -11,15 +11,15 @@
 </head>
 <body class="padding-top-lg">
 
-  <div>
-    <header class="margin-vertical-xs">
-      <ul class="wizard-steps">
-        <li>Step 1</li>
-        <li>Step 2</li>
-        <li>Step 3</li>
-      </ul>
-    </header>
+  <header class="container margin-vertical-xs">
+    <ul class="wizard-steps">
+      <li>Step 1</li>
+      <li>Step 2</li>
+      <li>Step 3</li>
+    </ul>
+  </header>
 
+  <main class="container margin-bottom-md">
     <section>
       <h1 class="margin-vertical-md">Add colleagues to your company</h1>
 
@@ -32,12 +32,11 @@
     </section>
 
     <section>
-      <h2 class="margin-vertical-md">Existing colleagues</h2>
+      <h2 class="margin-top-md margin-bottom-sm">Existing colleagues</h2>
 
       <ul class="list-unstyled list-striped" data-template="colleagues-list"></ul>
     </section>
-
-  </div>
+  </main>
 
   <footer class="padding-vertical-md text-align-center">
     <ul class="list-inline">
@@ -58,11 +57,30 @@
 
   <template id="colleagues-add-list-item">
     <label for="name_{{id}}" class="sr-only">Full name</label>
-    <input type="text" name="name_{{id}}" id="name_{{id}}" value="{{name}}" placeholder="John Doe" required />
+    <input
+      type="text"
+      name="name_{{id}}"
+      id="name_{{id}}"
+      value="{{name}}"
+      placeholder="John Doe"
+      required
+    />
 
     <label for="email_{{id}}" class="sr-only">Email</label>
-    <input type="email" name="email_{{id}}" id="email_{{id}}" value="{{email}}" placeholder="john.doe@gmail.com" required />
-    <button type="button" class="btn btn-link text-danger" data-action="colleagues-add-list-item-remove">X</button>
+    <input
+      type="email"
+      name="email_{{id}}"
+      id="email_{{id}}"
+      value="{{email}}"
+      placeholder="john.doe@gmail.com"
+      required
+    />
+
+    <div class="text-align-right">
+      <button type="button" class="btn btn-link text-danger" data-action="colleagues-add-list-item-remove">
+        X <span class="sr-only-md">Remove</span>
+      </button>
+    </div>
   </template>
 
   <template id="colleagues-add-list">
@@ -71,7 +89,7 @@
 
   <template id="colleagues-add">
     <ul class="list-unstyled" data-template="colleagues-add-list"></ul>
-    <p class="form-row">
+    <p class="form-row-inline">
       <input type="checkbox" name="notify_by_email" id="notify_by_email" />&#32;
       <label for="notify_by_email">Notify colleagues by email</label>
     </p>
