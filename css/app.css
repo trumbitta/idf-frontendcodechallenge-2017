@@ -41,7 +41,7 @@ a:visited {
 
 a:hover,
 a:active {
-  border-bottom: 0.0625em solid var(--color-link);
+  border-bottom: 0.0625em solid var(--color-link); /* `text-decoration: underline` tends to go over some letters */
 }
 
 /* Lists */
