@@ -131,6 +131,28 @@ input {
   padding: 0;
 }
 
+.form-row input {
+  display: block;
+  width: 100%;
+  margin-bottom: var(--spatial-rhythm-xs);
+}
+
+@media only screen and (min-width: 40.063em) { /* 641px - CSS variables don't seem to work here */
+  .form-row {
+    display: flex;
+  }
+
+  .form-row input {
+    flex: auto;
+    margin-right: var(--spatial-rhythm-md);
+    margin-bottom: 0;
+  }
+}
+
+.form-row-inline {
+  display: inline-block;
+}
+
 /* Cards */
 .card {
   background-color: var(--color-white);
@@ -167,6 +189,47 @@ footer {
   text-align: center !important;
 }
 
+.text-align-right {
+  text-align: right !important;
+}
+
+/* https://github.com/twbs/bootstrap/blob/v4-dev/scss/mixins/_screen-reader.scss */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  clip-path: inset(50%);
+  border: 0;
+}
+
+.sr-only-md {
+  position: static;
+  width: auto;
+  height: auto;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  clip-path: none;
+  border: none;
+}
+
+@media only screen and (min-width: 40.063em) { /* 641px - CSS variables don't seem to work here */
+  .sr-only-md {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+    clip-path: inset(50%);
+    border: 0;
+  }
+}
 /*
   Utilities - Rhythm - Vertical
   I'm not going to follow closely the dimensions in the sample images; I'll lay out
@@ -191,6 +254,18 @@ footer {
   margin-bottom: var(--spatial-rhythm-xs) !important;
 }
 
+.margin-top-md {
+  margin-top: var(--spatial-rhythm-md) !important;
+}
+
+.margin-bottom-md {
+  margin-bottom: var(--spatial-rhythm-md) !important;
+}
+
+.margin-bottom-sm {
+  margin-bottom: var(--spatial-rhythm-sm) !important;
+}
+
 .margin-bottom-none {
   margin-bottom: 0 !important;
 }
@@ -204,16 +279,29 @@ footer {
   padding-bottom: var(--spatial-rhythm-md) !important;
 }
 
-/* https://github.com/twbs/bootstrap/blob/v4-dev/scss/mixins/_screen-reader.scss */
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
-  clip-path: inset(50%);
-  border: 0;
+/*
+  Layout / Grid
+  Breakpoints are from Foundation: http://foundation.zurb.com/sites/docs/v/5.5.3/media-queries.html
+*/
+.container {
+  margin: 0 0.5em;
 }
 
+@media only screen and (min-width: 40.063em) { /* 641px - CSS variables don't seem to work here */
+  .container {
+    width: 76%;
+    margin: 0 auto;
+  }
+}
+
+@media only screen and (min-width: 90.063em) { /* 1441px */
+  .container {
+    width: 70%;
+  }
+}
+
+@media only screen and (min-width: 120.063em) { /* 1921px */
+  .container {
+    width: 50%;
+  }
+}
