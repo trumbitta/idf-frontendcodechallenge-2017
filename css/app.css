@@ -30,6 +30,11 @@ body {
   color: var(--color-black);
 }
 
+button,
+label {
+  cursor: pointer;
+}
+
 /* Typography */
 h1 {
   font-size: 2em;
