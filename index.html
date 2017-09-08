@@ -23,8 +23,8 @@
       <h1>Add colleagues to your company</h1>
 
       <!-- Not setting an `action` and a `method` because I will handle everything in JavaScript.
-           See `js/colleagues-add.component.js` for details and reasons why -->
-      <form>
+           See `js/colleagues-add.component.js` for more info -->
+      <form class="card">
         <div data-template="colleagues-status"></div>
         <div data-template="colleagues-add"></div>
       </form>
@@ -33,12 +33,12 @@
     <section>
       <h2>Existing colleagues</h2>
 
-      <ul class="list-unstyled" data-template="colleagues-list"></ul>
+      <ul class="list-unstyled list-striped" data-template="colleagues-list"></ul>
     </section>
 
   </div>
 
-  <footer>
+  <footer class="text-align-center">
     <a href="#">Footer link</a>
     <a href="#">Footer link</a>
     <a href="#">Footer link</a>
@@ -59,7 +59,7 @@
 
     <label for="email_{{id}}" class="sr-only">Email</label>
     <input type="email" name="email_{{id}}" id="email_{{id}}" value="{{email}}" placeholder="john.doe@gmail.com" required />
-    <button type="button" class="btn btn-link" data-action="colleagues-add-list-item-remove">X</button>
+    <button type="button" class="btn btn-link text-danger" data-action="colleagues-add-list-item-remove">X</button>
   </template>
 
   <template id="colleagues-add-list">
@@ -82,7 +82,7 @@
   </template>
 
   <template id="colleagues-list-item">
-    {{colleagueName}}&#32;({{colleagueEmail}})&#32;<button type="button" class="btn btn-link" data-action="existing-colleague-remove">X</button>
+    {{colleagueName}}&#32;({{colleagueEmail}})&#32;<button type="button" class="btn btn-link text-danger" data-action="existing-colleague-remove">X</button>
   </template>
 
   <template id="colleagues-list">

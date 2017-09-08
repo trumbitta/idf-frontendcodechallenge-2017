@@ -9,8 +9,13 @@
   --color-gray-light: #f9f9f9;
 
   --color-primary: #009cde;
+  --color-danger:  #f5391e;
 
   --color-link: var(--color-primary);
+
+  --border-radius-xs: 0.0625rem;
+  --border-radius-sm: 0.125rem;
+  --border-radius-md: 0.1875rem;
 }
 
 /* Base */
@@ -21,11 +26,22 @@ body {
 
 /* Typography */
 h1 {
-  font-size: 2rem;
+  font-size: 2em;
 }
 
 h2 {
-  font-size: 1.5rem;
+  font-size: 1.5em;
+}
+
+a:link,
+a:visited {
+  color: var(--color-link);
+  text-decoration: none;
+}
+
+a:hover,
+a:active {
+  border-bottom: 0.0625em solid var(--color-link);
 }
 
 /* Lists */
@@ -34,18 +50,27 @@ ul.list-unstyled {
   padding: 0;
 }
 
+ul.list-striped li:nth-child(even) {
+  background-color: var(--color-gray);
+  color: var(--color-white);
+}
+
+li {
+  padding: 0.375em 0.4365em;
+}
+
 /* Buttons */
 button[type="reset"] {
   color: var(--color-gray-dark);
 }
 
 .btn {
-  border-radius: 3px;
+  border-radius: var(--border-radius-md);
   border: 1px solid transparent;
-  box-shadow: -1px 0 rgba(100, 100, 100, 0.2),
-              1px 0 rgba(100, 100, 100, 0.2),
+  box-shadow: -1px 0 0 rgba(100, 100, 100, 0.2),
+              1px 0 0 rgba(100, 100, 100, 0.2),
               0 1px 1px rgba(100, 100, 100, 0.4);
-  padding: 0.5em 1.125em;
+  padding: 0.5rem 1.125rem;
   line-height: 1;
 }
 
@@ -62,9 +87,61 @@ button[type="reset"] {
   padding: 0;
 }
 
-/* Utilities */
+.btn-link:disabled {
+  color: var(--color-gray);
+}
+
+/* Forms */
+label {
+  color: var(--color-gray-dark);
+  font-weight: 500;
+}
+
+input {
+  background-color: var(--color-white);
+  border: 0.0625rem solid var(--color-gray);
+  border-radius: var(--border-radius-xs);
+  box-shadow: inset 0 1px 1px rgba(150, 150, 150, 0.2),
+              inset -1px 0 0 rgba(150, 150, 150, 0.1),
+              inset 1px 0 0 rgba(150, 150, 150, 0.1);
+  padding: 0.4365em 0.75em;
+  line-height: 1;
+}
+
+/* Cards */
+.card {
+  background-color: var(--color-white);
+  box-shadow: 0 3px 1px -1px rgba(100, 100, 100, 0.4),
+              -2px 0 1px -1px rgba(100, 100, 100, 0.2),
+              2px 0 1px -1px rgba(100, 100, 100, 0.2);
+  padding: 1.125em 1.25em;
+}
+
+@media only screen and (min-width: 40.063em) {
+  .card {
+    border-radius: var(--border-radius-sm);
+  }
+}
+
+/* Footer */
+footer {
+  background-color: var(--color-gray);
+}
+
+/*
+  Status-aware text
+  We use !important for these because when we use it we want them to always be active
+*/
+.text-danger {
+  color: var(--color-danger) !important;
+}
+
+/*
+  Utilities
+  We use !important for these because when we use it we want them to always be active
+*/
 .text-align-center {
-  text-align: center;
+  text-align: center !important;
 }
 
 /* https://github.com/twbs/bootstrap/blob/v4-dev/scss/mixins/_screen-reader.scss */
