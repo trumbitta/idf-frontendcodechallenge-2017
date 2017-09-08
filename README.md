@@ -1,17 +1,3 @@
-# Important
-
-Safari doesn't allow the use of window.localStorage when opening the `index.html` file directly with the browser.  
-It works if you serve the file with a web server.   
-
-The `http-server` node package is a simple web server, and similar
-ones are available for various languages: I know of `serve` for Ruby, and Python has a simple command too.
-
-Node: 
-```bash
-npm install -g http-server
-http-server .
-```
-
 # Welcome to the IDF Front End Code Challenge
 
 Congratulations on getting this far in the interview process! You've done a fantastic job. Now it's time to "let your fingers do the talking". We can't wait to see your code.
