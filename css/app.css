@@ -277,6 +277,16 @@ footer {
   Layout / Grid
   Breakpoints are from Foundation: http://foundation.zurb.com/sites/docs/v/5.5.3/media-queries.html
 */
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+
 .container {
   margin: 0 0.5em;
 }
