@@ -1,9 +1,9 @@
 (function() {
   'use strict';
 
-  function ColleaguesListComponent(existingUsers) {
+  function ColleaguesListComponent(existingColleagues) {
     this.template = new app.Template('colleagues-list');
-    this.existingUsers = existingUsers;
+    this.existingColleagues = existingColleagues;
 
     this._bindEvents();
   }
@@ -12,7 +12,7 @@
     // Quick way to ensure a proper update while using appendChild()
     this.template.templateTarget.innerHTML = '';
 
-    this.existingUsers.forEach(function(user, index) {
+    this.existingColleagues.forEach(function(user, index) {
       var userElement = document.createElement('li');
       userElement.setAttribute('data-template', 'colleagues-list-item');
       this.template.templateTarget.appendChild(userElement);
@@ -26,17 +26,17 @@
     on(document, 'existing-colleague-remove', function(event) {
       event.stopPropagation();
 
-      removeFromArray(this.existingUsers, event.detail);
+      removeFromArray(this.existingColleagues, event.detail);
 
       // This event is also listened to elsewhere
-      var customEvent = new CustomEvent('existing-colleagues-update', { detail: this.existingUsers });
+      var customEvent = new CustomEvent('existing-colleagues-update', { detail: this.existingColleagues });
       document.dispatchEvent(customEvent);
     }.bind(this));
 
     on(document, 'existing-colleagues-update', function(event) {
-      this.existingUsers = event.detail;
+      this.existingColleagues = event.detail;
 
-      updateStore(this.existingUsers);
+      updateStore(this.existingColleagues);
       this.updateView();
     }.bind(this));
   }
@@ -47,8 +47,8 @@
     }
   }
 
-  function updateStore(existingUsers) {
-    var customEvent = new CustomEvent('store-update', { detail: { key: 'existingUsers', data: existingUsers } });
+  function updateStore(existingColleagues) {
+    var customEvent = new CustomEvent('store-update', { detail: { key: 'existingColleagues', data: existingColleagues } });
     window.dispatchEvent(customEvent);
   }
 

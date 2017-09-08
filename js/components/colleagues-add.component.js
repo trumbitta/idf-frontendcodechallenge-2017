@@ -1,13 +1,13 @@
 (function() {
   'use strict';
 
-  function ColleaguesAddComponent(colleaguesToAdd, existingUsers) {
+  function ColleaguesAddComponent(colleaguesToAdd, existingColleagues) {
     this.template = new app.Template('colleagues-add');
     this.colleaguesAddListItemAddButtonDisabled = '';
     this.colleaguesAddButtonText = 'Add a colleague';
     this.colleaguesToAdd = colleaguesToAdd;
     this.colleaguesToAddReset = Array.from(colleaguesToAdd);
-    this.existingUsers = existingUsers;
+    this.existingColleagues = existingColleagues;
 
     // These events got caught in a multiplying loop because _bindEvents and updateView call each other
     this.colleaguesAddListItemRemoveHandler = handleColleaguesAddListItemRemove.bind(this);
@@ -55,10 +55,10 @@
 
       if (validateUserInput() === true) {
         this._saveUserInput();
-        var newExistingUsers = this.existingUsers.concat(this.colleaguesToAdd);
-        this.existingUsers = Array.from(newExistingUsers);
-        updateStore(this.existingUsers, 'existingUsers');
-        updateExistingColleaguesList(this.existingUsers);
+        var newExistingColleagues = this.existingColleagues.concat(this.colleaguesToAdd);
+        this.existingColleagues = Array.from(newExistingColleagues);
+        updateStore(this.existingColleagues, 'existingColleagues');
+        updateExistingColleaguesList(this.existingColleagues);
 
         // TODO: extract a method from these three lines: see also the next code block
         this.colleaguesToAdd = [{ email: '', name: '' }]; // TODO: use a model for this
@@ -96,7 +96,7 @@
   }
 
   ColleaguesAddComponent.prototype._updateColleaguesAddListItemAddButtonDisabled = function(colleaguesToAddCount) {
-    var maxColleaguesToAdd = 10 - this.existingUsers.length; // 10 should be a configuration constant
+    var maxColleaguesToAdd = 10 - this.existingColleagues.length; // 10 should be a configuration constant
     if (colleaguesToAddCount < maxColleaguesToAdd) {
       return this.colleaguesAddListItemAddButtonDisabled;
     } else {
@@ -177,12 +177,12 @@
   }
 
   function handleExistingColleaguesUpdate(event) {
-    this.existingUsers = event.detail;
+    this.existingColleagues = event.detail;
     this.updateView();
   }
 
-  function updateExistingColleaguesList(existingUsers) {
-    var customEvent = new CustomEvent('existing-colleagues-update', { detail: existingUsers });
+  function updateExistingColleaguesList(existingColleagues) {
+    var customEvent = new CustomEvent('existing-colleagues-update', { detail: existingColleagues });
     document.dispatchEvent(customEvent);
   }
 

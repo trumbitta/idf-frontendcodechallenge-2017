@@ -10,13 +10,13 @@
 
   IDFApp.prototype.init = function() {
     var data = self.store.findAll();
-    this.colleaguesStatusComponent = new app.ColleaguesStatusComponent(data.existingUsers.length);
+    this.colleaguesStatusComponent = new app.ColleaguesStatusComponent(data.existingColleagues.length);
     this.colleaguesStatusComponent.updateView();
 
-    this.colleaguesAddComponent = new app.ColleaguesAddComponent(data.colleaguesToAdd, data.existingUsers);
+    this.colleaguesAddComponent = new app.ColleaguesAddComponent(data.colleaguesToAdd, data.existingColleagues);
     this.colleaguesAddComponent.updateView();
 
-    this.colleaguesListComponent = new app.ColleaguesListComponent(data.existingUsers);
+    this.colleaguesListComponent = new app.ColleaguesListComponent(data.existingColleagues);
     this.colleaguesListComponent.updateView();
   }
 

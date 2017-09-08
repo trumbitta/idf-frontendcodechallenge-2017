@@ -10,7 +10,7 @@
     //     colleaguesToAdd: [
     //       { email: 'root@disney.com', name: 'Scrooge McDuck' }
     //     ],
-    //     existingUsers: [
+    //     existingColleagues: [
     //         { email: 'donald@disney.com', name: 'Donald' },
     //         { email: 'goofy@disney.com', name: 'Goofy' },
     //         { email: 'mickey@disney.com', name: 'Mickey' }
@@ -23,7 +23,7 @@
         colleaguesToAdd: [
           { email: '', name: '' }
         ],
-        existingUsers: []
+        existingColleagues: []
       };
 
       localStorage.setItem(dbName, JSON.stringify(data));

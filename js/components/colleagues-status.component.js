@@ -1,17 +1,17 @@
 (function() {
   'use strict';
 
-  function ColleaguesStatusComponent(existingUsersCount) {
+  function ColleaguesStatusComponent(existingColleaguesCount) {
     this.template = new app.Template('colleagues-status');
-    this.existingUsersCount = existingUsersCount;
+    this.existingColleaguesCount = existingColleaguesCount;
 
     this._bindEvents();
   }
 
   ColleaguesStatusComponent.prototype.updateView = function() {
     var templateData = {
-      colleaguesCount: this.existingUsersCount,
-      colleaguesLeft: 10 - this.existingUsersCount // TODO: '10' should be a configuration constant
+      colleaguesCount: this.existingColleaguesCount,
+      colleaguesLeft: 10 - this.existingColleaguesCount // TODO: '10' should be a configuration constant
     };
     this.template.render(templateData);
   }
@@ -20,14 +20,14 @@
     on(document, 'existing-colleague-remove', function(event) {
       event.stopPropagation();
 
-      this.existingUsersCount -= 1;
+      this.existingColleaguesCount -= 1;
       this.updateView();
     }.bind(this));
 
     on(document, 'existing-colleagues-update', function(event) {
       event.stopPropagation();
 
-      this.existingUsersCount = event.detail.length;
+      this.existingColleaguesCount = event.detail.length;
       this.updateView();
     }.bind(this));
   }
