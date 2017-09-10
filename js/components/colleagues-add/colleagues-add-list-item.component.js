@@ -21,7 +21,6 @@
   ColleaguesAddListItemComponent.prototype._bindEvents = function() {
     var eventName = 'colleagues-add-list-item-remove';
     var button = qs(`[data-action="${eventName}"]`, this.template.templateTarget);
-
     on(button, 'click', function(event) {
       event.preventDefault();
       event.stopPropagation();
