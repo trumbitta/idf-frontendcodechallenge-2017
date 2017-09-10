@@ -66,6 +66,7 @@
         this.updateView();
       } else {
         // TODO: dispatch event(s) to display helpful error message(s)
+        console.warn('Form validation failed: see comment in source code for details');
       }
     }.bind(this));
 
