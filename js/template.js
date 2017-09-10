@@ -14,10 +14,16 @@
     }
 
     var newElement = document.createElement(this.templateTarget.tagName);
+
     var preservedClasses = this.templateTarget.classList;
+    // This block is needed because the spread operator wasn't really working with Edge.
+    // Also because of Edge, see `DOMTokenList.prototype.forEach = Array.prototype.forEach;` in `utils.js`
     if (preservedClasses.length > 0) {
-      newElement.classList.add(this.templateTarget.classList);
+      preservedClasses.forEach(function(className) {
+        newElement.classList.add(className);
+      }, this);
     }
+
     newElement.innerHTML = templateHTMLPopulated;
 
     var parentNode = this.templateTarget.parentNode;

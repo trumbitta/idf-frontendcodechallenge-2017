@@ -23,6 +23,7 @@
     return document.getElementById(id);
   }
 
-  // Allow for looping on nodes (mostly for Edge)
+  // Allow for looping on some List types (mostly for Edge)
   NodeList.prototype.forEach = Array.prototype.forEach;
+  DOMTokenList.prototype.forEach = Array.prototype.forEach;
 })();
