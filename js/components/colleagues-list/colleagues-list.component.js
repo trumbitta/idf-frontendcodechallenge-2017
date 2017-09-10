@@ -12,12 +12,11 @@
     // Quick way to ensure a proper update while using appendChild()
     this.template.templateTarget.innerHTML = '';
 
-    this.existingColleagues.forEach(function(user, index) {
-      var userElement = document.createElement('li');
-      userElement.setAttribute('data-template', 'colleagues-list-item');
-      this.template.templateTarget.appendChild(userElement);
+    this.existingColleagues.forEach(function(colleague, index) {
+      var colleagueElement = prepareColleagueElement();
+      this.template.templateTarget.appendChild(colleagueElement);
 
-      this.colleaguesListItemComponent = new app.ColleaguesListItemComponent(user, index, this.template.templateTarget);
+      this.colleaguesListItemComponent = new app.ColleaguesListItemComponent(colleague, index, this.template.templateTarget);
       this.colleaguesListItemComponent.updateView();
     }, this);
   }
@@ -39,6 +38,16 @@
       updateStore(this.existingColleagues);
       this.updateView();
     }.bind(this));
+  }
+
+  function prepareColleagueElement() {
+    var element = document.createElement('li');
+
+    // I don't like setting classes programmatically; but this time I couldn't come up with a better custom framework, so I have to.
+    element.classList.add('animate', 'fade-in');
+    element.setAttribute('data-template', 'colleagues-list-item');
+
+    return element;
   }
 
   function removeFromArray(array, index) {
