@@ -1,16 +1,16 @@
 (function() {
   'use strict';
 
-  function ColleaguesListItemComponent(user, id, templateScope) {
+  function ColleaguesListItemComponent(colleague, id, templateScope) {
     this.template = new app.Template('colleagues-list-item', templateScope);
-    this.user = user;
+    this.colleague = colleague;
     this.id = id;
   }
 
   ColleaguesListItemComponent.prototype.updateView = function() {
     var templateData = {
-      colleagueEmail: this.user.email,
-      colleagueName: this.user.name
+      colleagueEmail: this.colleague.email,
+      colleagueName: this.colleague.name
     };
     this.template.render(templateData);
 

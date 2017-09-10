@@ -16,7 +16,7 @@
       var colleagueElement = prepareColleagueElement();
       this.template.templateTarget.appendChild(colleagueElement);
 
-      this.colleaguesListItemComponent = new app.ColleaguesListItemComponent(user, index, this.template.templateTarget);
+      this.colleaguesListItemComponent = new app.ColleaguesListItemComponent(colleague, index, this.template.templateTarget);
       this.colleaguesListItemComponent.updateView();
     }, this);
   }
