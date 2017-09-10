@@ -85,7 +85,7 @@
 
     <div class="text-align-right">
       <button type="button" class="btn btn-link text-danger" data-action="colleagues-add-list-item-remove">
-        <span class="fa fa-trash"></span><span class="sr-only-md">&#32; Remove</span>
+        <span class="fa fa-trash" aria-hidden="true"></span><span class="sr-only-md">&#32; Remove</span>
       </button>
     </div>
   </template>
@@ -113,8 +113,8 @@
 
   <template id="colleagues-list-item">
     {{colleagueName}}&#32;({{colleagueEmail}})&#32;
-    <button type="button" class="btn btn-link text-danger" data-action="existing-colleague-remove">
-      <span class="fa fa-trash"></span>
+    <button type="button" class="btn btn-link text-danger" aria-label="Remove {{colleagueName}}" data-action="existing-colleague-remove">
+      <span class="fa fa-trash" aria-hidden="true"></span>
     </button>
   </template>
 
