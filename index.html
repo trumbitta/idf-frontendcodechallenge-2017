@@ -6,6 +6,8 @@
 
   <title>IDF Front-End Code Challenge 2017</title>
 
+  <link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css" />
+
   <link rel="stylesheet" href="css/reset.css" />
   <link rel="stylesheet" href="css/app.css" />
   <link rel="stylesheet" href="css/typography.css" />
@@ -83,7 +85,7 @@
 
     <div class="text-align-right">
       <button type="button" class="btn btn-link text-danger" data-action="colleagues-add-list-item-remove">
-        X <span class="sr-only-md">Remove</span>
+        <span class="fa fa-trash"></span><span class="sr-only-md">&#32; Remove</span>
       </button>
     </div>
   </template>
@@ -108,7 +110,10 @@
   </template>
 
   <template id="colleagues-list-item">
-    {{colleagueName}}&#32;({{colleagueEmail}})&#32;<button type="button" class="btn btn-link text-danger" data-action="existing-colleague-remove">X</button>
+    {{colleagueName}}&#32;({{colleagueEmail}})&#32;
+    <button type="button" class="btn btn-link text-danger" data-action="existing-colleague-remove">
+      <span class="fa fa-trash"></span>
+    </button>
   </template>
 
   <template id="colleagues-list">
