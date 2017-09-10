@@ -43,7 +43,6 @@
   function prepareColleagueElement() {
     var element = document.createElement('li');
 
-    // I don't like setting classes programmatically; but this time I couldn't come up with a better custom framework, so I have to.
     element.classList.add('animate', 'fade-in');
     element.setAttribute('data-template', 'colleagues-list-item');
 
